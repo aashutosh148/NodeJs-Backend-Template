@@ -1,30 +1,52 @@
 {
-	"env": {
-		"node": true,
-		"es2021": true
-	},
-	"extends": ["eslint:recommended", "plugin:node/recommended"],
+	"root": true,
+	"parser": "@typescript-eslint/parser",
+	"plugins": [
+		"@typescript-eslint",
+		"eslint-plugin-import",
+		"prettier"
+	],
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:prettier/recommended"
+	],
 	"parserOptions": {
-		"ecmaVersion": 2021,
+		"ecmaVersion": 12,
 		"sourceType": "module"
 	},
 	"rules": {
-		"node/prefer-global/console": ["error", "always"],
-		"node/prefer-global/process": ["error", "always"],
-		"node/prefer-global/url-search-params": ["error", "always"],
-		"node/prefer-global/url": ["error", "always"],
-		"node/prefer-promises/dns": "error",
-		"node/prefer-promises/fs": "error",
-		"no-unused-vars": [
-			"warn",
-			{
-				"argsIgnorePattern": "^_"
-			}
-		],
+		"no-unused-vars": "error",
 		"no-console": "warn",
-		"indent": ["error", 2],
-		"linebreak-style": ["error", "unix"],
-		"quotes": ["error", "single"],
-		"semi": ["error", "always"]
-	}
+		"prefer-const": "error",
+		"@typescript-eslint/no-explicit-any": "error",
+		"@typescript-eslint/consistent-type-imports": "error",
+		"import/order": [
+			"error",
+			{
+				"groups": [
+					"builtin",
+					"external",
+					"internal"
+				]
+			}
+		]
+	},
+	"overrides": [
+		{
+			"files": [
+				"*.js"
+			],
+			"rules": {
+				"@typescript-eslint/no-var-requires": "off"
+			}
+		}
+	],
+	"prettier/prettier": [
+		"error",
+		{
+			"endOfLine": "auto"
+		}
+	]
 }
